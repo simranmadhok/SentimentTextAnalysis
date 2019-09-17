@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Text Miner{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/textminer.css')}}">
+
+<div class="outer-as">
+    <div class="inner-as">
+        <div class="upper-content">
+            <br><br>
+            <div class="row">
+                <div class="col-sm-5">
+                    <form method="post" name="inputText">
+                        {{ form.csrf_token }}
+                            You can enter your text here:
+                            {{ form.inputText }}
+                            {{ form.ignoreCase }} ignore case
+                            {{ form.ignoreStopWords }} ignore stopwords
+                            <button class="btn btn-success" type="submit" value="TA">Perform Analysis</button>
+                    </form>
+                </div>
+                {% if miningComplete %}
+                    <div class="col-sm-7">
+                        Total characters: {{ numChars }}
+                        Total tokens: {{ numTokens }}
+                        Unique tokens: {{ uniqueTokens }}
+                        Lexical diversity: {{ numTokens / uniqueTokens }}
+                        Top 10 words: {{ commonWords }}
+                    </div>
+                {% endif %}
+            </div>    
+        </div>   
+    </div>
+</div>
+
+{% endblock %}

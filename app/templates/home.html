@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+
+<div class="outer-as">
+    <div class="inner-as">
+        <div class="upper-content">
+            <br><br>
+            <label class="label1">Select Option</label>
+            <br>
+            <hr>
+            <div class="row" style="float: center;">
+                <div class="col-sm-5">
+                    <a href="{{ url_for('home') }}">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{url_for('static', filename='img/sentiment_analysis.png')}}" class="card-img-top imagelogo1" alt="sa">
+                            <div class="card-body">
+                                <h4 class="card-title">Sentiment Analysis</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-5">
+                    <a href="{{ url_for('textminer') }}">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{url_for('static', filename='img/text_mining.png')}}" class="card-img-top imagelogo2" alt="sa">
+                            <div class="card-body">
+                                <h4 class="card-title">Text Mining</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>    
+        </div>   
+    </div>
+</div>
+
+{% endblock %}

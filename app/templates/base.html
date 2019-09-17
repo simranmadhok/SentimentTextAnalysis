@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Loads the path to your static files-->  
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+        <!-- CSS Files -->
+        <link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet" />
+    </head>
+    <body>
+            <div class="topnav" id="myTopnav">
+                    <a href="{{ url_for('home') }}">
+                        <img src="{{url_for('static', filename='img/sta_logo.png')}}" alt="logo" class="imagelogo-index">
+                    </a>
+                    <label class="app-label">Sentiment & Text Analysis Tool</label>
+            </div>
+            
+            <!-- Main content -->
+            <div class="content-index">
+                    {% block content %}
+                    {% endblock %}
+            </div>
+            <div class="footer-index">
+                <p>© 2019 Sentiment & Text Analysis Tool.
+                </p>
+            </div>
+    </body>
+</html>

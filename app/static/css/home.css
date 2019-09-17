@@ -1,0 +1,63 @@
+/*
+Styling for home.html
+*/
+
+  .outer-as{
+    width: 100vw;
+    background-color: #accffe;
+  }
+  
+  .inner-as {
+    width: 100vw;
+    background-color: white;
+  }
+
+  .label1{
+    font-size: 40px;
+    color: #333333;
+    float: center;
+  }
+
+  .imagelogo1{
+    width: 240px;
+    height: 200px;
+  }  
+  
+  .imagelogo2{
+    width: 240px;
+    height: 200px;
+  }  
+
+  .label2{
+    font-size: 20px;
+    color: #000000;
+  }
+
+  .label3{
+    font-family: Montserrat-Regular;
+    font-size: 18px;
+    color: #000000;
+  }
+
+  .upper-content{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 20px;
+  }
+
+  .lower-content{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+  }
+
+  .prof-link, .msr-link{
+    color: black;
+    font-family: Montserrat-Regular;
+  }
+
+  .prof-link:hover, .msr-link:hover{
+    text-decoration: underline;
+    color: black;
+    font-family: Montserrat-Regular;
+  }

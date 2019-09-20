@@ -4,11 +4,13 @@ Styling for home.html
 
   .outer-as{
     width: 100vw;
+    height: 700px;
     background-color: #accffe;
   }
   
   .inner-as {
     width: 100vw;
+    height: 700px;
     background-color: white;
   }
 
@@ -49,15 +51,4 @@ Styling for home.html
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 50px;
-  }
-
-  .prof-link, .msr-link{
-    color: black;
-    font-family: Montserrat-Regular;
-  }
-
-  .prof-link:hover, .msr-link:hover{
-    text-decoration: underline;
-    color: black;
-    font-family: Montserrat-Regular;
   }

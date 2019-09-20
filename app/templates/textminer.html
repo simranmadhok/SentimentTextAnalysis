@@ -2,35 +2,94 @@
 {% block title %}Text Miner{% endblock %}
 {% block content %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="{{url_for('static', filename='css/textminer.css')}}">
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script>
+    '{% if miningComplete %}'
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(JSON.parse('{{ data | tojson | safe }}'));
+            var options = {
+                title: "Top 10 words",
+                titleTextStyle: {
+                    fontName: 'Times New Roman',
+                    fontSize: 20,
+                    bold: true,
+                    italic: false,
+                    color: '#000099',
+                },
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+                hAxis: {
+                    title: 'Frequency',
+                    titleTextStyle: {
+                    'fontSize': 23,
+                    color: 'black',
+                    bold: true,
+                    italic: false,
+                    },
+                    'textStyle': {
+                    'fontSize': 15,
+                    color: 'black',
+                    },
+                },
+                vAxis: {
+                    title: 'Common Words',
+                    titleTextStyle: {
+                    'fontSize': 23,
+                    color: 'black',
+                    bold: true,
+                    italic: false,
+                    },
+                    'textStyle': {
+                    'fontSize': 15,
+                    color: 'black',
+                    bold: true,
+                    },
+                },
+        };
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      chart.draw(data, options);
+  }
+       
+    '{% endif %}'
+    
+</script>
 
 <div class="outer-as">
     <div class="inner-as">
         <div class="upper-content">
             <br><br>
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-5" id="text_div">
                     <form method="post" name="inputText">
-                        {{ form.csrf_token }}
-                            You can enter your text here:
-                            {{ form.inputText }}
-                            {{ form.ignoreCase }} ignore case
-                            {{ form.ignoreStopWords }} ignore stopwords
-                            <button class="btn btn-success" type="submit" value="TA">Perform Analysis</button>
+                        {{ form.hidden_tag() }}
+                        <label class="label1">You can enter your text here:</label><br>
+                        {{ form.inputText }}
+                        <br><br>
+                        {{ form.ignoreCase }} ignore case
+                        <br><br>
+                        {{ form.ignoreStopWords }} ignore stopwords
+                        <br><br>
+                        <button class="btn btn-success" type="submit" value="TA">Perform Analysis</button>
                     </form>
                 </div>
+                <div class="col-sm-7" id="statistics_div">
                 {% if miningComplete %}
-                    <div class="col-sm-7">
-                        Total characters: {{ numChars }}
-                        Total tokens: {{ numTokens }}
-                        Unique tokens: {{ uniqueTokens }}
-                        Lexical diversity: {{ numTokens / uniqueTokens }}
-                        Top 10 words: {{ commonWords }}
-                    </div>
+                        <label class="label1">Statistics</label><br><hr>
+                        <label class="label2">Total characters:</label> {{ numChars }} &nbsp; &nbsp; <label class="label2">Total tokens:</label> {{ numTokens }}<br><br>
+                        <label class="label2">Unique tokens:</label> {{ uniqueTokens }} &nbsp; &nbsp;<label class="label2"> Lexical diversity:</label> {{ numTokens / uniqueTokens }}<br><br>
+                        <div id="barchart_values" style="width: 900px; height: 400px;"></div>
                 {% endif %}
+                </div>
             </div>    
         </div>   
     </div>

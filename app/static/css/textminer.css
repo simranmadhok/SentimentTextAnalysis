@@ -1,0 +1,52 @@
+/*
+Styling for textminer.html
+*/
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../static/font/poppins/Poppins-Regular.ttf'); 
+}  
+
+@font-face {
+    font-family: Montserrat-Light;
+    src: url('../../static/font/monserrat/Montserrat-Light.ttf'); 
+}
+  
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('../../static/font/monserrat/Montserrat-Regular.ttf'); 
+}
+
+
+.outer-as{
+    width: 100vw;
+    height: 700px;
+    background-color: #accffe;
+}
+
+.inner-as {
+    width: 100vw;
+    height: 700px;
+    background-color: white;
+}
+.upper-content{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+
+#text_div{
+    height: 600px;
+}
+
+.label1{
+    font-size: 25px;
+    font-family: Poppins-Regular;
+    color: darkblue;
+}
+
+.label2{
+    font-size: 15px;
+    font-family: Montserrat-Regular;
+    color: black;
+}

@@ -20,4 +20,4 @@ Google Charts (https://developers.google.com/chart/)
 
 # Screenshots
 
-![Alt text](https://imgur.com/a/aW5LXUk "Text Analyser Tool")
+![Alt text](https://i.imgur.com/igBOIxt.png "Text Analyser Tool")
